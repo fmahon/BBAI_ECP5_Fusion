@@ -11,6 +11,8 @@ RUN git clone https://github.com/YosysHQ/yosys.git /workspace/yosys
 RUN apt-get install build-essential clang bison flex libreadline-dev gawk tcl-dev libffi-dev git graphviz xdot pkg-config python3 libboost-system-dev libboost-python-dev libboost-filesystem-dev zlib1g-dev iverilog -y
 RUN cd /workspace/yosys && make config-clang && make && make install && make test
 
-
+RUN apt-get install qt5-default libeigen3-dev -y
 RUN git clone https://github.com/YosysHQ/nextpnr.git /workspace/nextpnr
-RUN cd /workspace/nextpnr/ && cmake -DARCH=ecp5 -DTRELLIS_ROOT=/workspace/prjtrellis . && make -j&(nproc) && make install
+RUN cd /workspace/nextpnr &&  cmake -DARCH=ecp5 -DTRELLIS_ROOT=/workspace/prjtrellis .
+RUN cd /workspace/nextpnr && make -j&(nproc)
+RUN cd /workspace/nextpnr && make install
