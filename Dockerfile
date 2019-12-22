@@ -16,3 +16,5 @@ RUN git clone https://github.com/YosysHQ/nextpnr.git /workspace/nextpnr
 RUN cd /workspace/nextpnr &&  cmake -DARCH=ecp5 -DTRELLIS_ROOT=/workspace/prjtrellis .
 RUN cd /workspace/nextpnr && make -j&(nproc)
 RUN cd /workspace/nextpnr && make install
+
+RUN apt-get install pipenv -y
